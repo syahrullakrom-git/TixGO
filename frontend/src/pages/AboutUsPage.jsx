@@ -17,7 +17,7 @@ const AboutUsPage = () => {
       <Navbar />
       {/* Hero Section */}
       <header className="bg-[#00CCCC] text-white py-16 text-center">
-        <h1 className="text-4xl font-bold">Tentang Saya</h1>
+        <h1 className="text-4xl font-bold">Tentang Kami</h1>
         <p className="mt-4 text-lg max-w-3xl mx-auto">
           Di balik TixGO adalah orang berbakat dan berdedikasi yang selalu
           berusaha memberikan pengalaman terbaik kepada Anda.
@@ -27,7 +27,7 @@ const AboutUsPage = () => {
       {/* Creators Section */}
       <section className="py-16 px-6 max-w-screen-xl mx-auto">
         <h2 className="text-2xl font-semibold text-gray-800 text-center mb-12">
-          Kenali Saya
+          Kenali Developer
         </h2>
         <div
           className=" bg-white rounded-lg shadow-md overflow-hidden
