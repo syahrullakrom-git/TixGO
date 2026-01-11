@@ -8,6 +8,7 @@ import LoadingSpinner from "../component/loadingSpinner";
 function LoginPage() {
   const [email, setInputEmail] = useState("");
   const [password, setInputPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -66,7 +67,7 @@ function LoginPage() {
             {/* Form Section */}
             <div className="md:w-1/2 p-4 flex flex-col justify-center items-center">
               <h1 className="text-lg sm:text-xl font-semibold text-center text-gray-800 mb-2">
-                SELAMAT DATANG DI UNITIX
+                SELAMAT DATANG DI TixGO
               </h1>
               <p className="text-xs sm:text-sm text-center text-gray-600 mb-4">
                 Satu klik, ribuan pengalaman
@@ -94,7 +95,7 @@ function LoginPage() {
                   />
                 </div>
 
-                <div className="mb-4">
+                <div className="mb-4 relative">
                   <label
                     htmlFor="password"
                     className="block text-xs font-semibold text-gray-700"
@@ -102,7 +103,7 @@ function LoginPage() {
                     Password
                   </label>
                   <input
-                    type="password"
+                    type={showPassword ? "text" : "password"}
                     id="password"
                     name="password"
                     placeholder="Masukan password"
@@ -110,6 +111,39 @@ function LoginPage() {
                     onChange={(e) => setInputPassword(e.target.value)}
                     className="w-full p-3 mt-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm"
                   />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-4 top-[38px] text-gray-500 hover:text-gray-700"
+                  >
+                    {showPassword ? (
+                      /* eye-off */
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M3 3l18 18" />
+                        <path d="M10.6 10.6a2 2 0 002.8 2.8" />
+                        <path d="M9.9 4.2A10.9 10.9 0 0112 4c7 0 11 8 11 8a21.8 21.8 0 01-5 6" />
+                        <path d="M6.2 6.2A21.8 21.8 0 001 12s4 8 11 8a10.9 10.9 0 005.8-1.7" />
+                      </svg>
+                    ) : (
+                      /* eye */
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                        <circle cx="12" cy="12" r="3" />
+                      </svg>
+                    )}
+                  </button>
                 </div>
 
                 <div className="mb-4 text-right">
@@ -146,8 +180,8 @@ function LoginPage() {
             {/* Logo Section */}
             <div className="hidden md:flex md:w-1/2 bg-[#b3ffff] items-center justify-center">
               <img
-                src="logo.svg"
-                alt="Unitix Logo"
+                src="TixGO.svg"
+                alt="TixGO Logo"
                 className="h-48 w-48 object-contain"
               />
             </div>

@@ -30,7 +30,7 @@ const Navbar = () => {
     <header className="bg-white shadow-md py-4 px-6 flex justify-between items-center">
       {/* Navigasi Kiri */}
       <div className="flex items-center space-x-8">
-        <div className="text-xl font-semibold text-[#00CCCC]">UniTIX</div>
+        <div className="text-xl font-semibold text-[#00CCCC]">TixGO</div>
 
         <nav className="space-x-6 hidden md:flex">
           {[

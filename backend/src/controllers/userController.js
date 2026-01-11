@@ -115,22 +115,20 @@ const userController = {
 
   async editProfile(req, res) {
     try {
-      const { name, photoUrl } = req.body;
       const userId = req.user.id;
-
       const user = await DB.User.findById(userId);
-      if (!user) {
-        return ResponseAPI.notFound(res, "User not found");
-      }
+      if (!user) return ResponseAPI.notFound(res, "User not found");
 
+      // Upload file kalau ada
       if (req.file) {
-        const urlUploadResult = await imageUpload(req.file);
-
-        user.photo_url = urlUploadResult.data.url;
+        const uploadResult = await imageUpload(req.file);
+        user.photo_url = uploadResult.data.url;
       }
 
-      if (name) user.name = name;
-      if (photoUrl) user.photo_url = photoUrl;
+      // Update nama kalau ada
+      if (req.body.name) {
+        user.name = req.body.name;
+      }
 
       await user.save();
 
@@ -148,13 +146,11 @@ const userController = {
         "Profile updated successfully"
       );
     } catch (error) {
-      if (req.file && fs.existsSync(req.file.path)) {
+      if (req.file && fs.existsSync(req.file.path))
         fs.unlinkSync(req.file.path);
-      }
       return ResponseAPI.serverError(res, error);
     }
   },
-
   async changePassword(req, res) {
     try {
       const { oldPassword, newPassword, confirmNewPassword } = req.body;

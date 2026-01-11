@@ -68,13 +68,15 @@ const Checkin = () => {
               <div className="flex flex-col items-center">
                 {responseMessage ? (
                   <div
-                    className={`p-4 rounded-lg ${
+                    className={`p-4 rounded-lg max-w-md w-full text-center ${
                       isValid
                         ? "bg-green-200 text-green-800"
                         : "bg-red-200 text-red-800"
                     }`}
                   >
-                    <h3 className="text-lg">{isValid ? "Sukses" : "Gagal"}</h3>
+                    <h3 className="text-lg-semibold">
+                      {isValid ? "Sukses" : "Gagal"}
+                    </h3>
                     <p>{responseMessage}</p>
                   </div>
                 ) : (

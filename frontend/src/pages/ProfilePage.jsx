@@ -29,49 +29,37 @@ const EditProfilePage = () => {
 
   const handleUpdate = async () => {
     if (!name) {
-      toast.warn("Nama tidak boleh kosong.", {
-        position: "top-right",
-        autoClose: 1500,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-      });
+      toast.warn("Nama tidak boleh kosong.", { autoClose: 1500 });
       return;
     }
 
     const formData = new FormData();
     formData.append("name", name);
     if (newPhotoFile) {
-      formData.append("photoUrl", newPhotoFile);
+      formData.append("photoUrl", newPhotoFile); // harus sama dengan multer di backend
     }
 
     try {
       const response = await userApi.editProfile(formData);
       if (response.success) {
-        toast.success("Profil berhasil diperbarui!", {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: true,
-          closeOnClick: true,
-          pauseOnHover: true,
-        });
-        // Update local storage
+        toast.success("Profil berhasil diperbarui!", { autoClose: 2000 });
+
+        // Update localStorage
         const updatedUser = {
           ...JSON.parse(localStorage.getItem("user")),
           name: response.data.user.name,
-          photoUrl: response.data.user.photo_url || photo_url,
+          photo_url: response.data.user.photo_url,
         };
         localStorage.setItem("user", JSON.stringify(updatedUser));
+
+        // Update state langsung di UI
+        setName(response.data.user.name);
+        setPhoto_url(response.data.user.photo_url);
+        setNewPhotoFile(null);
       }
     } catch (error) {
-      const errorMessage = error.response?.data?.message;
-
-      toast.error(errorMessage, {
-        position: "top-right",
-        autoClose: 1500,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
+      toast.error(error.response?.data?.message || "Gagal memperbarui profil", {
+        autoClose: 2000,
       });
     }
   };

@@ -13,6 +13,7 @@
     "@babel/runtime": "^7.26.0",
     "autoprefixer": "^10.4.20",
     "axios": "^1.7.8",
+    "lucide-react": "^0.562.0",
     "postcss": "^8.4.49",
     "prop-types": "^15.8.1",
     "qrcode.react": "^4.2.0",

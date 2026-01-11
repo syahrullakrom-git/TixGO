@@ -9,11 +9,11 @@ const Footer = () => {
       <div className="container mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between">
         {/* About Us Section */}
         <div className="mb-6 md:mb-0">
-          <h4 className="text-lg font-semibold">Tentang UniTIX</h4>
+          <h4 className="text-lg font-semibold">Tentang TixGO</h4>
           <p className="text-sm mt-2 max-w-xs">
-            UniTIX adalah platform tiket digital modern untuk organisasi kampus
+            TixGO adalah platform tiket digital modern untuk organisasi kampus
             yang menawarkan solusi terbaik untuk pengalaman acara Anda. Baik itu
-            konser, konferensi, atau festival, kami hadir untuk memudahkan!
+            konser, seminar, atau festival, kami hadir untuk memudahkan!
           </p>
         </div>
 
@@ -65,8 +65,8 @@ const Footer = () => {
       {/* Footer Bottom Section */}
       <div className="border-t border-white mt-8 pt-4 text-sm text-center">
         <p>
-          &copy; {new Date().getFullYear()} UniTIX. All Rights Reserved.
-          Designed by Tix Infinity.
+          &copy; {new Date().getFullYear()} TixGO. All Rights Reserved. Designed
+          by M.S. Akrom.
         </p>
       </div>
     </footer>

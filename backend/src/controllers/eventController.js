@@ -102,21 +102,35 @@ const eventController = {
 
   async update(req, res) {
     try {
-      if (!req.params.id) {
-        return ResponseAPI.error(res, "ID not provided!", 400);
+      const { id } = req.params;
+
+      if (!id) {
+        return ResponseAPI.badRequest(res, "ID not provided");
       }
 
-      const event = await DB.Event.findByIdAndUpdate(req.params.id, req.body, {
-        new: true,
-      });
+      const event = await DB.Event.findById(id);
+      if (!event) {
+        return ResponseAPI.notFound(res, "Event not found");
+      }
+
+      // update field manual (PENTING)
+      event.name = req.body.name;
+      event.dateTime = new Date(req.body.dateTime);
+      event.location = req.body.location;
+      event.description = req.body.description;
+      event.quota = Number(req.body.quota);
+      event.ticketPrice = Number(req.body.ticketPrice);
+      event.eventBy = req.body.eventBy;
+
+      // jika upload gambar baru
       if (req.file) {
-        const urlUploadResult = await imageUpload(req.file);
-
-        event.posterUrl = urlUploadResult.data.url;
+        const uploadResult = await imageUpload(req.file);
+        event.posterUrl = uploadResult.data.url;
       }
+
       await event.save();
 
-      return ResponseAPI.success(res, event);
+      return ResponseAPI.success(res, event, "Event updated successfully");
     } catch (error) {
       if (req.file && fs.existsSync(req.file.path)) {
         fs.unlinkSync(req.file.path);

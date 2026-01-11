@@ -5,34 +5,10 @@ import Footer from "../layout/Footer";
 const AboutUsPage = () => {
   const creators = [
     {
-      name: "M Dipo Alam Kusumo",
-      email: "kusumo.dipo.dk@gmail.com",
-      role: "Backend Developer",
-      image: "/DNA-1710.JPG",
-    },
-    {
-      name: "Aryo Yonatan",
-      role: "Backend Developer",
-      email: "99aryoyonatan@gmail.com",
-      image: "/Screenshot 2024-12-20 232638.png",
-    },
-    {
-      name: "Vella Puspitasari Wijayanti",
-      email: "vellapuspita0@gmail.com",
-      role: "Frontend Developer",
-      image: "/Screenshot 2024-12-20 232705.png",
-    },
-    {
-      name: "Dimas Adi Syahputra",
-      email: "adisqd77@gmail.com",
-      role: "Frontend Developer",
-      image: "/Screenshot 2024-12-20 232720.png",
-    },
-    {
       name: "Muhammad Syahrul Akrom",
-      email: "syahrulcbp@gmail.com",
-      role: "UI/UX Designer",
-      image: "/Screenshot 2024-12-20 232734.png",
+      email: "syahrullakrom@gmail.com",
+      role: "Fullstack Web Development",
+      image: "aku.jpeg",
     },
   ];
 
@@ -41,9 +17,9 @@ const AboutUsPage = () => {
       <Navbar />
       {/* Hero Section */}
       <header className="bg-[#00CCCC] text-white py-16 text-center">
-        <h1 className="text-4xl font-bold">Tentang Kami</h1>
+        <h1 className="text-4xl font-bold">Tentang Saya</h1>
         <p className="mt-4 text-lg max-w-3xl mx-auto">
-          Di balik UniTIX adalah tim berbakat dan berdedikasi yang selalu
+          Di balik TixGO adalah orang berbakat dan berdedikasi yang selalu
           berusaha memberikan pengalaman terbaik kepada Anda.
         </p>
       </header>
@@ -51,9 +27,16 @@ const AboutUsPage = () => {
       {/* Creators Section */}
       <section className="py-16 px-6 max-w-screen-xl mx-auto">
         <h2 className="text-2xl font-semibold text-gray-800 text-center mb-12">
-          Kenali Kreator Kami
+          Kenali Saya
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
+        <div
+          className=" bg-white rounded-lg shadow-md overflow-hidden
+    flex flex-col justify-between
+    hover:shadow-lg transform hover:scale-105 transition duration-300
+    mx-auto
+    md:col-span-2
+    lg:col-span-5"
+        >
           {creators.map((creator, index) => (
             <div
               key={index}
